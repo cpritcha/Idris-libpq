@@ -1,0 +1,17 @@
+package libpq
+
+version    = 0.0.1
+brief      = "Idris bindings for libpq"
+
+author     = Calvin Pritchard <pritchard.calvin@gmail.com>
+license    = BSD3
+homepage   = https://github.com/cpritcha/idris-libpq
+sourceloc  = git@github.com:cpritcha/idris-libpq.git
+bugtracker = https://github.com/cpritcha/idris-libpq/issues
+
+opts = "--include --link"
+sourcedir  = src
+modules    = Test
+tests      = Test.spec
+executable = pgidris
+main       = Main

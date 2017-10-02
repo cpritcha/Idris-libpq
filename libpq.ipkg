@@ -9,7 +9,7 @@ homepage   = https://github.com/cpritcha/idris-libpq
 sourceloc  = git@github.com:cpritcha/idris-libpq.git
 bugtracker = https://github.com/cpritcha/idris-libpq/issues
 
-opts = "--include --link"
+opts = "-p contrib"
 sourcedir  = src
 modules    = Test
 tests      = Test.spec

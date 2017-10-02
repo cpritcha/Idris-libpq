@@ -1,7 +1,10 @@
 module Main
 
+import CFFI
+
 %dynamic "/usr/local/opt/libpq/lib/libpq.dylib"
---%include C  "/usr/local/opt/libpq/include/libpq-fe.h"
+%include C  "/usr/local/opt/libpq/include/libpq-fe.h"
+%lib C "pq"
 
 pqConnectDb : String -> IO Ptr
 pqConnectDb s
@@ -15,9 +18,9 @@ pqFinish : Ptr -> IO ()
 pqFinish p
     = foreign FFI_C "PQfinish" (Ptr -> IO ()) p
 
-pqStatus : String -> IO Int
-pqStatus s
-    = foreign FFI_C "PQstatus" (String -> IO Int) s
+pqStatus : Ptr -> IO Int
+pqStatus p
+    = foreign FFI_C "PQstatus" (Ptr -> IO Int) p
 
 export data ConnectionStatus 
     = OK
@@ -64,7 +67,7 @@ main = do
     putStrLn "connecting to db"
     let connection = "host=localhost port=5432 dbname=idris user=idris"
     p <- pqConnectDb connection
-    status <- pqStatus connection
+    status <- pqStatus p
     putStr "connection status: "
     let statusMsg = mkConnectionStatus status
     putStrLn $ show statusMsg

@@ -1,17 +1,12 @@
-# idris-libpq!
+# idris-libpq
 
 Idris wrapper for libpq (Postgres).
 
 libpq path is currently hardwired for Mac OS X (you will need to the `%dynamic` path to 
-change where libpq exists). The example C program from the postgresql documentation works 
-(just run ./build.sh in `src`). Main works in the repl.
+change where libpq exists).
+
+## Build the Package
 
 ```
-docker-compose up -d
-
-idris
-:l src/Main.idr
-:m main
+./build.sh
 ```
-
-but not when compiled. 
